@@ -9,7 +9,6 @@ import com.library.library_backend.model.Book;
 @Repository
 public interface IBookRepository extends JpaRepository <Book, UUID> {
 
-    List<Book> findByBookId(UUID bookId);
     List<Book> findByAvailable(Boolean available);// Buscar todos los libros disponibles 
     List<Book> findByTitle(String title);
     

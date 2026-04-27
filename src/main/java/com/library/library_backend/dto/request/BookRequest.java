@@ -16,6 +16,7 @@ public class BookRequest {
      private String title;
     private String author;
     private String isbn;
+    private Boolean available;
     private UUID categoryId;  // solo el ID, no el objeto completo
 
 }

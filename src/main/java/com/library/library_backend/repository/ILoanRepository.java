@@ -11,8 +11,10 @@ import com.library.library_backend.model.Loan;
 @Repository
 public interface ILoanRepository extends JpaRepository <Loan, UUID> {
 
-    List<Loan> findByLoanId(UUID loanId);
+    // Buscar todos los préstamos de un usuario
+    List<Loan> findByUserUserId(UUID userId);
 
+    
     // Buscar préstamos activos de un libro (return_date es null)
     // Esto sirve para validar si el libro ya está prestado
     @Query("SELECT l FROM Loan l WHERE l.book.bookId = :bookId AND l.returnDate IS NULL")

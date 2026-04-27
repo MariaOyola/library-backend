@@ -9,7 +9,6 @@ import com.library.library_backend.model.UserAccount;
 @Repository
 public interface IUserAccountRepository extends JpaRepository <UserAccount, UUID> {
 
-    List<UserAccount> findByUserId(UUID userId);
     List<UserAccount> findByEmail(String email);
 
 }

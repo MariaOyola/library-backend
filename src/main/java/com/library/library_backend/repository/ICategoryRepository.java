@@ -11,9 +11,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ICategoryRepository extends JpaRepository <Category, UUID> {
-                                                           // Category = el modelo que maneja
-       
-List<Category> findByCategoryId(UUID categoryId);                                                           // // Category = el modelo que maneja
+                                                           // Category = el modelo que maneja                                                       // // Category = el modelo que maneja
 List<Category> findByName(String name);
                                           
 }

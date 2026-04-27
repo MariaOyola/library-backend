@@ -1,5 +1,3 @@
-//  Service  recibe los datos del controller, aplica la lógica del negocio y llama al repository. 
-//  la interfaz (qué hace)
 package com.library.library_backend.service;
 
 import com.library.library_backend.dto.request.CategoryRequest;
@@ -8,11 +6,13 @@ import java.util.List;
 import java.util.UUID;
 
 public interface CategoryService {
-
-    List<CategoryResponse> findAll();
-    CategoryResponse findById(UUID id);
+     List<CategoryResponse> findAll();
+    // JpaRepository<Category, UUID>
+    // Category → el modelo que maneja
+    // UUID     → el tipo del ID
+    List<CategoryResponse>findByName(String name);
+    CategoryResponse findById(UUID Id); 
     CategoryResponse save(CategoryRequest C); 
-    List<CategoryResponse> findByName(String name); 
     CategoryResponse update(UUID id, CategoryRequest C);
-    void delete(UUID id);
+    void delete(UUID id); 
 }
