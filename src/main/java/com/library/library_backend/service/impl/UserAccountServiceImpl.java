@@ -10,8 +10,8 @@ import com.library.library_backend.dto.response.UserAccountResponse;
 import com.library.library_backend.model.UserAccount;
 import com.library.library_backend.repository.IUserAccountRepository;
 import com.library.library_backend.service.UserAccountService;
-
 import lombok.RequiredArgsConstructor;
+import java.time.OffsetDateTime;
 
 @Service
 @RequiredArgsConstructor
@@ -75,13 +75,18 @@ public class UserAccountServiceImpl implements UserAccountService {
         repository.deleteById(id);
     }
 
+    @Override
+    public UserAccountResponse response(UserAccountRequest request) {
+        return save(request);
+    }
+
     //  Model → DTO
     private UserAccountResponse modelToDto(UserAccount user) {
         UserAccountResponse response = new UserAccountResponse();
         response.setUserId(user.getUserId());
         response.setName(user.getName());
         response.setEmail(user.getEmail());
-
+        response.setRegistrationDate(user.getRegistrationDate());
         return response;
     }
 
@@ -90,6 +95,7 @@ public class UserAccountServiceImpl implements UserAccountService {
         UserAccount user = new UserAccount();
         user.setName(request.getName());
         user.setEmail(request.getEmail());
+        user.setRegistrationDate(OffsetDateTime.now());
 
         return user;
     }

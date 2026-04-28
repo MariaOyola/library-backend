@@ -1,6 +1,5 @@
 package com.library.library_backend.model;
 
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
@@ -12,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.PrePersist;  //anotacion
 import java.util.UUID;
 
 @Getter
@@ -22,7 +22,7 @@ import java.util.UUID;
 @Table(name = "user_account", schema = "library")
 public class UserAccount extends BaseModel {
 
-     @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "user_id")
     private UUID userId;
@@ -36,4 +36,10 @@ public class UserAccount extends BaseModel {
     @Column(name = "registration_date", nullable = false, updatable = false)
     private OffsetDateTime registrationDate;
 
+    @PrePersist
+    public void prePersist() {   // la funcionalidad es ejecutar un metodo antes de guardar el objeto en la base de datos. 
+        if (registrationDate == null) {
+            registrationDate = OffsetDateTime.now();
+        }
+    }
 }

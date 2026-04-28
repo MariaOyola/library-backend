@@ -13,6 +13,7 @@ public interface UserAccountService {
     UserAccountResponse save(UserAccountRequest U); 
     List<UserAccountResponse>findByEmail(String email);
     UserAccountResponse update(UUID id, UserAccountRequest U); 
+    UserAccountResponse response(UserAccountRequest U); 
     void delete(UUID id); 
 
 }
